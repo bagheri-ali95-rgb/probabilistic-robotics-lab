@@ -12,15 +12,19 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-
+find_package(geometry_msgs REQUIRED)
 add_executable(talker src/pub.cpp)
 
 add_executable(listener src/sub.cpp)
+add_executable(cmd_vel_pub src/cmd_vel_pub.cpp)
+ament_target_dependencies(cmd_vel_pub rclcpp geometry_msgs)
+
 ament_target_dependencies(listener rclcpp std_msgs)
 ament_target_dependencies(talker rclcpp std_msgs)
 install(TARGETS
   talker
   listener
+  cmd_vel_pub
   DESTINATION lib/${PROJECT_NAME})
 
 
@@ -36,5 +40,8 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
 ament_package()
