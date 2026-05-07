@@ -1,0 +1,7 @@
+# Lokale Quellen - nicht pushen
+Quellen/
+
+# Build Artefakte
+build/
+install/
+log/
