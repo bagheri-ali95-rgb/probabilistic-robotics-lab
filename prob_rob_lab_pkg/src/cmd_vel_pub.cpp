@@ -9,7 +9,7 @@ public:
     CmdVelPublisher() : Node("cmd_vel_publisher")
     {
         publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(
-            "/cmd_vel", 10);
+            "/cmd_vel_unstamped", 10);
 
         timer_ = this->create_wall_timer(
             500ms,
