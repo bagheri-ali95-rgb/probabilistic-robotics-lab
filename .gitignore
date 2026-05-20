@@ -5,3 +5,6 @@ Quellen/
 build/
 install/
 log/
+
+# IDE
+.vscode/
